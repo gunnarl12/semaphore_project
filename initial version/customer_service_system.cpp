@@ -11,6 +11,9 @@
 
 using namespace std;
 
+// command to compile:
+// g++ -o customer_service_system customer_service_system.cpp -lpthread -std=c++11
+
 // set up semaphores
 sem_t serviceChairs;
 sem_t waitingChairs;
@@ -287,10 +290,8 @@ void * startCustomer(void * dummyParameter) {
 		// reduce customer start watcher to 0
 		// this attribute ensures that the customer's start time has passed
 		((struct t_args*)dummyParameter)->startWatcher--;	
-		
-		//if (((struct t_args*)dummyParameter)->startWatcher == 0) {
-			customerServiced( (void *) dummyParameter);
-		//}
+		// take the customer to the servicing section and determine when their service ends
+		customerServiced( (void *) dummyParameter);
 		// open up a waiting seat	
 		sem_post(&waitingChairs);
 }
