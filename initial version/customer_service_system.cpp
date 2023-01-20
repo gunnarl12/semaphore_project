@@ -21,7 +21,7 @@ sem_t waitingChairs;
 // project specification:
 // waiting chairs 4
 // service chairs 2
-// assitants 2
+// assistants 2
 // customers 12
 //
 //
